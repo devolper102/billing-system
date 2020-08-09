@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="csrf-token" content="{{ csrf_token() }}" />
-
-<title>Phase 1</title>
-
-  @include('frontend.common.head')
-
-</head>
-<body>
+@include('frontend.common.head')
 <script>
   var app_url = '{{url('/')}}'
 </script>
@@ -31,9 +19,7 @@
               </div>
             </div>
           </div>
-          <div class="main_logo">
-           <a href="{{url('/')}}"><img src="{{asset('frontend_assets/images/logo.png')}}" alt="#"></a>
-          </div>
+          @include('frontend.common.header_logo')
           <div class="menu_detail">
             <div class="profile_list">
               <input type="hidden" name="user_id" value="{{$user->id}}">
@@ -71,6 +57,7 @@
                     </div>
                   </div>
                 </li>
+
                 <li>
                   <div class="profile_box">
                     <div class="menu_box_table">
@@ -81,29 +68,90 @@
                       </div>
                       <div class="profile_box_tableCell width50">
                         <div class="profile_box_text profile_afterEdit">
-                          <p>{{$user->address}}</p>
+                          <p>Rue: <span class="prof_street_spn">{{$user->street}}</span></p>
+                          <p>Nimero: <span class="prof_street_number_spn" >{{$user->street_number}}</span></p>
+                          <p>Code Postal: <span class="prof_postal_code_spn" >{{$user->postal_code}}</span></p>
+                          <p>Municipalite: <span class="prof_municipality_spn" > {{$user->municipality}} </span></p>
                         </div>
                         <div class="profile_edit">
-                          <ul>
-                            <li>
-                              <div class="profile_edit_feildOut">
-                                <div class="profile_edit_feild">
-                                  <textarea name="address">{{$user->address}}</textarea>
+                          <div class="add_client_detail">
+                            <div class="add_client_detail_row">
+                              <div class="menu_box_table">
+                                <div class="profile_box_tableCell width40">
+                                  <div class="profile_box_text">
+                                    <strong>Rue:</strong>
+                                  </div>
+                                </div>
+                                <div class="profile_box_tableCell">
+                                  <div class="profile_edit_feildOut">
+                                    <div class="profile_edit_feild">
+                                      <input type="text" name="street" class="profile_street" value="{{$user->street}}">
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
-                            </li>
-                          </ul>
+                            </div>
+                            <div class="add_client_detail_row">
+                              <div class="menu_box_table">
+                                <div class="profile_box_tableCell width40">
+                                  <div class="profile_box_text">
+                                    <strong>Numero:</strong>
+                                  </div>
+                                </div>
+                                <div class="profile_box_tableCell">
+                                  <div class="profile_edit_feildOut">
+                                    <div class="profile_edit_feild">
+                                      <input type="text" name="street_number" class="profile_street_number" value="{{$user->street_number}}">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="add_client_detail_row">
+                              <div class="menu_box_table">
+                                <div class="profile_box_tableCell width40">
+                                  <div class="profile_box_text">
+                                    <strong>Code Postal:</strong>
+                                  </div>
+                                </div>
+                                <div class="profile_box_tableCell">
+                                  <div class="profile_edit_feildOut">
+                                    <div class="profile_edit_feild">
+                                      <input type="text" name="postal_code" class="profile_postal_code" value="{{$user->postal_code}}">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="add_client_detail_row">
+                              <div class="menu_box_table">
+                                <div class="profile_box_tableCell width40">
+                                  <div class="profile_box_text">
+                                    <strong>Municipalite:</strong>
+                                  </div>
+                                </div>
+                                <div class="profile_box_tableCell">
+                                  <div class="profile_edit_feildOut">
+                                    <div class="profile_edit_feild">
+                                      <input type="text" name="municipality" class="profile_Municipalite" value="{{$user->municipality}}">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="profile_box_tableCell">
                         <div class="profile_box_text">
-                          <a class="profile_edit_btn" data-id="{{$user->id}}" data-name="{{$user->name}}" href="javascript:void(0)">Edit</a>
+                          <a class="profile_edit_btn"  data-id="{{$user->id}}" href="javascript:void(0)">Edit</a>
                           <input class="profile_save_btn" data-type="address" type="submit" value="Save">
                         </div>
                       </div>
                     </div>
                   </div>
                 </li>
+
                 <li>
                   <div class="profile_box">
                     <div class="menu_box_table">
@@ -137,6 +185,7 @@
                     </div>
                   </div>
                 </li>
+
                 <li>
                   <div class="profile_box">
                     <div class="menu_box_table">
@@ -147,32 +196,94 @@
                       </div>
                       <div class="profile_box_tableCell width50">
                         <div class="profile_box_text profile_afterEdit">
+
                           <p>{{$user->bank_account}}</p>
-                          {{--<p>BIC: BBEUBECB</p>--}}
+                          <p><span class="bank_bic_spn" >{{$user->bic}}</span></p>
+
                         </div>
                         <div class="profile_edit">
-                          <ul>
-                            <li>
-                              <div class="profile_edit_feildOut">
-                                <div class="profile_edit_feild">
-                                  <input type="text" value="{{$user->bank_account}}" name="bank_account">
+                          <div class="add_client_detail">
+                            <div class="add_client_detail_row">
+                              <div class="menu_box_table">
+                                <div class="profile_box_tableCell width40">
+                                  <div class="profile_box_text">
+                                    <strong>IBAN:</strong>
+                                  </div>
+                                </div>
+                                <div class="profile_box_tableCell">
+                                  <div class="profile_edit_feildOut">
+                                    <div class="profile_edit_feild">
+                                      <input type="text" name="bank_account" class="bank_account" value="{{$user->bank_account}}">
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
-                            </li>
-                           {{-- <li>
-                              <div class="profile_edit_feildOut">
-                                <div class="profile_edit_feild">
-                                  <input type="text">
+                            </div>
+                            <div class="add_client_detail_row">
+                              <div class="menu_box_table">
+                                <div class="profile_box_tableCell width40">
+                                  <div class="profile_box_text">
+                                    <strong>BIC:</strong>
+                                  </div>
+                                </div>
+                                <div class="profile_box_tableCell">
+                                  <div class="profile_edit_feildOut">
+                                    <div class="profile_edit_feild">
+                                      <input type="text" name="bic" class="bic" value="{{$user->bic}}">
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
-                            </li>--}}
-                          </ul>
+                            </div>
+
+                          </div>
                         </div>
                       </div>
                       <div class="profile_box_tableCell">
                         <div class="profile_box_text">
                           <a class="profile_edit_btn" data-id="{{$user->id}}" data-name="{{$user->bank_account}}" href="javascript:void(0)">Edit</a>
                           <input class="profile_save_btn" data-type="bank_account" type="submit" value="Save">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="profile_box">
+                    <div class="menu_box_table">
+                      <div class="profile_box_tableCell width40">
+                        <div class="profile_box_text">
+                          <strong>Change Password:</strong>
+                        </div>
+                      </div>
+                      <div class="profile_box_tableCell width50">
+                        {{--<div class="profile_box_text profile_afterEdit">
+                          <p></p>
+                        </div>--}}
+                        <div class="profile_edit">
+                          <ul>
+                            <li>
+                              <div class="profile_edit_feildOut">
+                                <div class="profile_edit_feild">
+                                  <input type="password"  name="password" placeholder="Enter Password" autocomplete="off">
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="profile_edit_feildOut">
+                                <div class="profile_edit_feild">
+                                  <input type="password" name="confirm_password"  placeholder="Confirm Password"  autocomplete="off">
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="profile_box_tableCell">
+                        <div class="profile_box_text">
+                          <a class="profile_edit_btn" data-id="{{$user->id}}" data-name="{{$user->password}}"  href="javascript:void(0)">Edit</a>
+                          <input class="profile_save_btn" data-type="password" type="submit" value="Save">
                         </div>
                       </div>
                     </div>
@@ -211,6 +322,40 @@
                     </div>
                   </div>
                 </li>
+                <li>
+                  <div class="profile_box">
+                    <div class="menu_box_table">
+                      <div class="profile_box_tableCell width40">
+                        <div class="profile_box_text">
+                          <strong>Email address:</strong>
+                        </div>
+                      </div>
+                      <div class="profile_box_tableCell width50">
+                        <div class="profile_box_text profile_afterEdit">
+                          <p>{{$user->recipient_email}}</p>
+                        </div>
+                        <div class="profile_edit">
+                          <ul>
+                            <li>
+                              <div class="profile_edit_feildOut">
+                                <div class="profile_edit_feild">
+                                  <input type="text" value="{{$user->recipient_email}}" name="recipient_email">
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="profile_box_tableCell">
+                        <div class="profile_box_text">
+                          <a class="profile_edit_btn" data-id="{{$user->id}}" data-name="{{$user->recipient_email}}"  href="javascript:void(0)">Edit</a>
+                          <input class="profile_save_btn" data-type="recipient_email" type="submit" value="Save">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
               </ul>
             </div>
           </div>

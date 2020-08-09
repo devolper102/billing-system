@@ -19,7 +19,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','address','bank_account','tva_number','phone_number'
+        'name', 'email', 'password', 'address', 'bank_account','bic', 'tva_number', 'phone_number', 'recipient_email',
+        'street',
+        'street_number',
+        'municipality',
+        'postal_code',
     ];
 
     /**
@@ -38,5 +42,10 @@ class User extends Authenticatable
      */
 
 
-    
+    public function user_clients()
+    {
+
+        $this->hasMany(Client::class, 'user_id');
+    }
+
 }

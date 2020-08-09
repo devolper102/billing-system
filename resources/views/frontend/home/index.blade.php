@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Phase 1</title>
-
 @include('frontend.common.head')
-
-</head>
-<body>
 <div class="wrapper" role="main">
     <!--home section start-->
-    <div class="home_main">
+    <div class="home_main" style="background-image: url('{{getSettingImage('home_image')}}');background-repeat:no-repeat;
+            background-size: cover;position: relative;">
       <div class="home_auto">
         <div class="home_inner">
           <div class="home_header clearfix">
             <div class="home_header_left">
               <div class="home_header_logo">
-                <a href="javascript:void(0);"><img src="{{asset('frontend_assets/images/logo.png')}}" alt="#"></a>
+                <a href="{{url('/')}}"><img id="hdr_logo_set" src="{{getSettingImage('logo')}} " alt="#"></a>
               </div>
             </div>
             <div class="home_header_right">
@@ -25,6 +16,7 @@
                 <ul>
                   <li><a class="all_buttons" href="{{route('contact_us')}}">Contact</a></li>
                   <li><a class="all_buttons" href="{{route('login')}}">Login</a></li>
+
                 </ul>
               </div>
             </div>

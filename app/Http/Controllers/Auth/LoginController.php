@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -26,7 +29,9 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/menu';
+
+
 
     /**
      * Create a new controller instance.
@@ -43,5 +48,24 @@ class LoginController extends Controller
         $this->guard()->logout();
         $request->session()->invalidate();
         return $this->loggedOut($request) ?: redirect('/login');
+    }
+
+
+    public function postLogin(Request $request){
+
+
+        $password = $request->password;
+        $user = User::find(1);
+        if (!Hash::check($password, $user->password)) {
+            return ['status'=>false, 'message' => 'Login fail, Please check password'];
+        }
+        $credentials = ['email'=> $user->email, 'password'=> $request->password];
+        if (Auth::attempt($credentials)) {
+            return [
+                'status'=>true, 'message' => 'You have login successfully'
+            ];
+        }
+
+
     }
 }
