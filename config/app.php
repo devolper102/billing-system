@@ -238,7 +238,6 @@ return [
         'ApiResponse'=> App\Facades\ApiResponse::class,
         'HttpCode' => App\Facades\HttpCode::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
-        'PDF' => Barryvdh\DomPDF\Facade::class,
 
 
 
