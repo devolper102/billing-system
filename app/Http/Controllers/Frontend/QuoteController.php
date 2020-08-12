@@ -112,7 +112,7 @@ class QuoteController extends Controller
         $qtDataArr['amount'] = $request->amount;
         $qtDataArr['user'] = $user;
         $qtDataArr['quote_number'] = $request->quote_number;
-
+        dd($qtDataArr);
         if ($request->is_non_client) {
             $pdf = PDF::loadView($this->viewPath.'/quotes/pref_draft_bill_template_pdf', $qtDataArr);
             $pdfName = 'Facture_'.$request->concerned.'_'.$client['street'].time().'.pdf';
