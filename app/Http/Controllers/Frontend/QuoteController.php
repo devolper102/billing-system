@@ -114,23 +114,23 @@ class QuoteController extends Controller
         $qtDataArr['quote_number'] = $request->quote_number;
 
         if ($request->is_non_client) {
-            $pdf = PDF::loadView($this->viewPath.'/quotes/pref_draft_bill_template_pdf', $qtDataArr);
+            /*$pdf = PDF::loadView($this->viewPath.'/quotes/pref_draft_bill_template_pdf', $qtDataArr);
             $pdfName = 'Facture_'.$request->concerned.'_'.$client['street'].time().'.pdf';
             $filename = public_path('uploads/quotes/'.$pdfName);
-            $pdf->save($filename);
+            $pdf->save($filename);*/
             return [
                 'status'=> true,
-                'pdf_url'=>  $pdfName
+                'pdf_url'=>  ''   // $pdfName
             ];
         }else {
 
-            $pdf = PDF::loadView($this->viewPath.'/quotes/quotes_template_pdf', $qtDataArr);
+            /*$pdf = PDF::loadView($this->viewPath.'/quotes/quotes_template_pdf', $qtDataArr);
             $pdfName = 'Devis_'.$request->concerned.'_'.$client['street'].time().'.pdf';
             $filename = public_path('uploads/quotes/'.$pdfName);
-            $pdf->save($filename);
+            $pdf->save($filename);*/
             return [
                 'status'=> true,
-                'pdf_url'=>  $pdfName
+                'pdf_url'=>  ''
             ];
         }
 
@@ -192,19 +192,20 @@ class QuoteController extends Controller
 
             if ($request->type == 'bill'){
 
-                $pdf = PDF::loadView($this->viewPath.'/quotes/pref_draft_bill_template_pdf', $qtDataArr);
+                /*$pdf = PDF::loadView($this->viewPath.'/quotes/pref_draft_bill_template_pdf', $qtDataArr);
                 $pdfName = 'Facture_'.$concernText.'_'.$client['street'].time().'.pdf';
                 $filename = public_path('uploads/quotes/'.$pdfName);
                 $pdf->save($filename);
-                $quote->file = $pdfName;
+                $quote->file = ''; //$pdfName
+                */
 
             }else if ($request->type == 'quote'){
 
-                $pdf = PDF::loadView($this->viewPath.'/quotes/quotes_template_pdf', $qtDataArr);
+               /* $pdf = PDF::loadView($this->viewPath.'/quotes/quotes_template_pdf', $qtDataArr);
                 $pdfName = 'Devis_'.$concernText.'_'.$client['street'].time().'.pdf';
                 $filename = public_path('uploads/quotes/'.$pdfName);
                 $pdf->save($filename);
-                $quote->file = $pdfName;
+                $quote->file = '';*/
 
             }
 
