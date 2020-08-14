@@ -55,8 +55,7 @@ class QuoteController extends Controller
         $type = 'bill';
         return view($this->viewPath.'/quotes/add_quote',compact('user',$type));
     }
-
-
+    
     public function getSingleQuote($clientId, $id){
 
         $type = 'quote';
