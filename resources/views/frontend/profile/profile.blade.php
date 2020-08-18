@@ -63,7 +63,7 @@
                     <div class="menu_box_table">
                       <div class="profile_box_tableCell width40">
                         <div class="profile_box_text">
-                          <strong>Address:</strong>
+                          <strong>Adresse:</strong>
                         </div>
                       </div>
                       <div class="profile_box_tableCell width50">
@@ -254,7 +254,7 @@
                     <div class="menu_box_table">
                       <div class="profile_box_tableCell width40">
                         <div class="profile_box_text">
-                          <strong>Change Password:</strong>
+                          <strong>Changer mon mot de passe:</strong>
                         </div>
                       </div>
                       <div class="profile_box_tableCell width50">
@@ -327,7 +327,7 @@
                     <div class="menu_box_table">
                       <div class="profile_box_tableCell width40">
                         <div class="profile_box_text">
-                          <strong>Email address:</strong>
+                          <strong>Email Adresse:</strong>
                         </div>
                       </div>
                       <div class="profile_box_tableCell width50">
