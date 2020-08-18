@@ -290,9 +290,11 @@
                           </div>
                         </div>
                       </div>
-                      <a class="addClient_addBtn" href="javascript:void(0);"><i class="fa fa-plus"></i></a>
-                      <a class="addClient_delBtn" href="javascript:void(0);"><i class="fa fa-minus"></i></a>
+                      <a style="display: block" class="addClient_addBtn" href="javascript:void(0);"><i class="fa fa-plus"></i></a>
+                      <a style="display: none;" class="addClient_delBtn" href="javascript:void(0);"><i class="fa fa-minus"></i></a>
                     </div>
+
+
                   </div>
                 </li>
                 <li>

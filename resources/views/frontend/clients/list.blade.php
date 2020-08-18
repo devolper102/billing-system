@@ -41,29 +41,7 @@
             <input type="search" data-type="{{request()->segment(count(request()->segments()))}}" placeholder="Recherche Client" class="client_srch_field">
             <input type="submit" class="search_client_btn">
           </div>
-          <div class="listing_popuop delete_confirm_popup_box" style="display: none" >
-            <div class="listing_pop_table">
-              <div class="listing_pop_tableCell">
-                <div class="listing_pop_inner">
-                  <div class="menu_box_table">
-                    <div class="profile_box_tableCell width55">
-                      <div class="listing_pop_text">
-                        <p>Etes vous sur de vouloir supprimer <b id="del_client_name">Choupay Pierrot?</b></p>
-                      </div>
-                    </div>
-                    <div class="profile_box_tableCell">
-                      <div class="listing_pop_btns">
-                        <ul>
-                          <li><a href="javascript:void(0)" class="cancel_del_button">Annuler</a></li>
-                          <li><a href="javascript:void(0)" class="confirm_del_btn">Oui</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
           <div class="profile_list " id="client_list_section">
             @include('frontend.clients.client_listing')
           </div>

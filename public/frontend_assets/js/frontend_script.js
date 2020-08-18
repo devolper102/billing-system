@@ -223,7 +223,35 @@ $("#submit_contact_form").click(function(e){
         let obj = $(this);
         let id = $(obj).attr('data-id');
         let name = $(obj).attr('data-name');
+        $(".delete_confirm_popup_box").remove();
+        $(this).closest('li').find('.delete_confirm_popup_box').remove();
         $(".delete_confirm_popup_box").show();
+        let delPopupHtml = ` <div class="listing_popuop delete_confirm_popup_box" style="display: block" >
+                                <div class="listing_pop_table">
+                                  <div class="listing_pop_tableCell">
+                                    <div class="listing_pop_inner">
+                                      <div class="menu_box_table">
+                                        <div class="profile_box_tableCell width55">
+                                          <div class="listing_pop_text">
+                                            <p>Etes vous sur de vouloir supprimer <b id="del_client_name">Choupay Pierrot?</b></p>
+                                          </div>
+                                        </div>
+                                        <div class="profile_box_tableCell">
+                                          <div class="listing_pop_btns">
+                                            <ul>
+                                              <li><a href="javascript:void(0)" class="cancel_del_button">Annuler</a></li>
+                                              <li><a href="javascript:void(0)" class="confirm_del_btn">Oui</a></li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>`;
+        $(this).closest('li').prepend(delPopupHtml);
+        console.log("d",  )
+
         $(".delete_confirm_popup_box").find('#del_client_name').text(name);
         let url = app_url+'/clients/delete/'+id;
         $(".confirm_del_btn").unbind('click');
@@ -486,11 +514,7 @@ function saveFormClient(clientForm, isEdit) {
     if ($.trim(last_name) === ""){
         $(clientForm).find('input[name="last_name"]').after('<p class="error_text">Nom is required.</p>');
         status = false;
-    } if ($.trim(first_name) === "") {
-
-        $(clientForm).find('input[name="first_name"]').after('<p class="error_text">Prenom is required.</p>');
-        status = false;
-    } if ($.trim(email) === ""){
+    }  if ($.trim(email) === ""){
 
         $(clientForm).find('input[name="email"]').after('<p class="error_text">Email is required.</p>');
         status = false;
@@ -515,9 +539,6 @@ function saveFormClient(clientForm, isEdit) {
         $(clientForm).find('input[name="phone_number"]').after('<p class="error_text">Numero de Telephone is required.</p>');
         status = false;
 
-    } if ($.trim(tva_number) === ""){
-        $(clientForm).find('input[name="tva_number"]').after('<p class="error_text">Numero TVA is required.</p>');
-        status = false;
     }
 
     let lang = $(clientForm).find('.client_language_sec').find('li a.active').attr('data-name');
@@ -525,6 +546,7 @@ function saveFormClient(clientForm, isEdit) {
 
     let workAddress = [];
     let wrkAddressId = 1;
+
     $('.addclient_appendRow').each(function () {
 
             let work_address_street = $(this).find('input[name="work_address_street"]').val();

@@ -18,7 +18,6 @@
                 $showLinkText = 'Dossier';
       }
 
-
 @endphp
 <ul>
 
@@ -58,7 +57,7 @@
             <div class="profile_box_tableCell" style="width: {{$cellWidth}};">
               <div class="profile_box_text" style="display: {{ $showProfileSec }}">
                 @if(request()->segment(count(request()->segments())) == 'delete' || $type == 'delete')
-                   <a data-name="{{$client->first_name }} {{$client->last_name }}" data-id="{{$client->id}}" class="clientList_edit_btn delete_client_button" href="javascript:void(0)">Supprimer</a>
+                   <a data-name="{{$client->last_name }} {{$client->first_name }}" data-id="{{$client->id}}" class="clientList_edit_btn delete_client_button" href="javascript:void(0)">Supprimer</a>
 
                 @elseif(request()->segment(count(request()->segments())) == 'show' || $type == 'show')
 
@@ -68,10 +67,11 @@
 
                       <a class="clientList_edit_btn" href="{{route('client_list.show', Hashids::encode($client->id))}}">Nouvelle facture</a>
 
+                  @elseif(request()->segment(count(request()->segments())) == 'clients' || $type == 'clients')
 
-                  <a class="clientList_edit_btn" href="{{route('client.edit', Hashids::encode($client->id))}}">Edit</a>
+                      <a class="clientList_edit_btn" href="{{route('client.edit', Hashids::encode($client->id))}}">Editer</a>
 
-                @endif
+                  @endif
               </div>
               <div class="client_list_arrow">
                 <a href="javascript:void(0)"><i class="fa fa-caret-down"></i></a>
